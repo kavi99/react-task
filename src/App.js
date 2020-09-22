@@ -1,12 +1,9 @@
 import React from "react";
-import "./App.css";
+import Transaction from "./components/organisms/Transaction";
+import "./app.scss";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>KAvi</h1>
-    </div>
-  );
+  return <Transaction />;
 }
 
 export default App;
