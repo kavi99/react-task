@@ -1,42 +1,51 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./styles/index.scss";
-import api from "../../../api";
+import EditIcon from "@material-ui/icons/Edit";
+import DeleteIcon from "@material-ui/icons/Delete";
+import PropTypes from "prop-types";
 
-const Table = () => {
-  const [resData, setresData] = useState([]);
-  const [thList, setthList] = useState([]);
-  useEffect(() => {
-    api(`https://5f69d98ad808b90016bc07e0.mockapi.io/api/v1/Transaction`)
-      .then((res) => {
-        setresData(res);
-        const keys = Object.keys(res[0]);
-        setthList(keys);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
+const Table = ({ res, th, editIconClick, deleteIconClick }) => {
   return (
     <table>
-      <tbody>
+      <thead>
         <tr>
-          {thList.map((th, index) => (
-            <td key={index}>{th}</td>
+          {th.map((th, index) => (
+            <th className="table-header" key={index}>
+              {th.charAt(0).toUpperCase() + th.slice(1).toLowerCase()}
+            </th>
           ))}
+          <th className="table-header">Delete</th>
+          <th className="table-header">Update</th>
         </tr>
-        {resData.map((data) => (
-          <tr key={data.id}>
+      </thead>
+      <tbody>
+        {res.map((data) => (
+          <tr className={data.id % 2 === 0 ? "" : "flak"} key={data.id}>
             <td>{data.id}</td>
             <td>{data.name}</td>
             <td>{data.description}</td>
             <td>{data.date}</td>
-            <td>{data.amount}</td>
+            <td>{data.currency + " " + data.amount}</td>
+            <td onClick={() => deleteIconClick(data)} className="table-icons">
+              <DeleteIcon style={{ color: "#E71C23" }} />
+            </td>
+            <td onClick={() => editIconClick(data)} className="table-icons">
+              <EditIcon style={{ color: "#F3B431" }} />
+            </td>
           </tr>
         ))}
       </tbody>
     </table>
   );
+};
+
+Table.propTypes = {
+  res: PropTypes.array.isRequired,
+  th: PropTypes.array.isRequired,
+};
+
+Table.defaultProps = {
+  res: [],
 };
 
 export default Table;

@@ -1,3 +1,6 @@
+$black: #2c3335;
+$white: #dae0e2;
+$softWhite: #7b8788;
 .container {
   background-color: #ffff;
   height: 100%;
@@ -8,10 +11,28 @@
   .content {
     flex-direction: row;
     display: flex;
-    //justify-content: space-between;
+    height: 100%;
     .table-content {
       flex: 1;
       padding: 15px;
+      table {
+        width: 100%;
+        td {
+          text-align: center;
+        }
+        th {
+          font-family: sans-serif;
+          color: $black;
+          background-color: $white;
+          padding: 5px;
+        }
+        .table-icons {
+          cursor: pointer;
+          &:hover {
+            opacity: 0.5;
+          }
+        }
+      }
       .btn-transaction {
         justify-content: flex-end;
         display: flex;
@@ -21,7 +42,7 @@
         border: none;
         background: none;
         border-radius: 4px;
-        background-color: #7b8788;
+        background-color: $softWhite;
         border: none;
         color: #ffffff;
         text-align: center;
@@ -44,7 +65,7 @@
 
   .header {
     height: 50px;
-    background-color: #dae0e2;
+    background-color: $white;
   }
   .menu-content {
     background-color: #eaf0f1;
@@ -52,19 +73,56 @@
     align-items: center;
     height: 100%;
     padding-top: 15px;
+    .menu-text-content-active {
+      margin-bottom: 15px;
+      padding: 10px;
+      background-color: $white;
+      &:hover {
+        cursor: pointer;
+      }
+      span {
+        padding: 10px;
+        color: $black;
+        font-size: 22px;
+      }
+    }
     .menu-text-content {
       margin-bottom: 15px;
       padding: 10px;
       &:hover {
-        background-color: #dae0e2;
-        cursor: pointer;
+        background-color: $white;
+        cursor: no-drop;
       }
-
-      text {
+      span {
         padding: 10px;
-        color: #2c3335;
+        color: $black;
         font-size: 22px;
       }
     }
+  }
+  .footer {
+    color: $black;
+    height: 50px;
+    background-color: $white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 10px;
+  }
+  tbody {
+    display: block;
+    height: 500px;
+    overflow: auto;
+  }
+  thead,
+  tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  thead {
+    width: calc(100% - 1em);
   }
 }

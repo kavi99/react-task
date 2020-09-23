@@ -1,6 +1,6 @@
 import React from "react";
 
-const Button = ({ value }) => {
+const MyButton = ({ value }) => {
   return (
     <div className="btn-new-transaction">
       <div>+</div>
@@ -9,4 +9,4 @@ const Button = ({ value }) => {
   );
 };
 
-export default Button;
+export default MyButton;

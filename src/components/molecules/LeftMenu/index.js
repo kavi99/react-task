@@ -5,16 +5,16 @@ const LeftMenu = () => {
     <div className="menu-container">
       <div className="menu-content">
         <div className="menu-text-content">
-          <text>Dashboard</text>
+          <span>Dashboard</span>
+        </div>
+        <div className="menu-text-content-active">
+          <span>Transactions</span>
         </div>
         <div className="menu-text-content">
-          <text>Transactions</text>
+          <span>Accounts</span>
         </div>
         <div className="menu-text-content">
-          <text>Accounts</text>
-        </div>
-        <div className="menu-text-content">
-          <text>Settings</text>
+          <span>Settings</span>
         </div>
       </div>
     </div>
